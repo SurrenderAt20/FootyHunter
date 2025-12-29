@@ -1,33 +1,38 @@
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## Getting Started
+
+First, run the development server:
+
+```bash
 # FootyHunter
 
-An in-progress game concept (stack not chosen yet).
+A daily football/soccer-themed hunting game.
 
-## What is this?
+## Stack
 
-FootyHunter will be a football/soccer-inspired game where you “hunt” for things—collectibles, moments, trophies, players, items, whatever the final design becomes.
+- Next.js (App Router)
+- Tailwind CSS
+- Static datasets (JSON)
+- Local game state (localStorage)
+- Daily seed logic (deterministic)
+- Vercel hosting
 
-Right now this repository is intentionally **minimal** so we can decide the tech stack and game scope first.
+## Local development
 
-## Decisions we still need to make
+```bash
+npm install
+npm run dev
+```
 
-- **Platform**: Web / Desktop / Mobile
-- **Game type**: 2D / 3D / Text-based / Hybrid
-- **Engine/framework** (examples):
-  - Unity (C#)
-  - Godot (GDScript/C#)
-  - Unreal (C++)
-  - Web (TypeScript + Canvas/WebGL)
-  - Python prototype (Pygame)
-- **Repo structure** once stack is chosen
+Then open http://localhost:3000
 
-## Next steps
+## What’s implemented so far
 
-1. Write a 1–2 paragraph game pitch (core loop + win/lose conditions).
-2. Pick a target platform.
-3. Pick an engine/framework.
-4. Then we’ll scaffold the repo accordingly (source folders, build tooling, CI, etc.).
+- A tiny **daily challenge** loop (deterministic per UTC day)
+- Starter item dataset in `src/data/items.json`
+- Local progress persisted in the browser
 
-## Notes
+## Deploy
 
-- No code yet by design.
-- Once we pick a stack, we’ll add a license, `.gitignore`, and proper project layout.
+This project is ready to deploy on Vercel as-is (standard Next.js build).
