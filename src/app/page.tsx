@@ -1,9 +1,9 @@
 "use client";
 
 import * as React from "react";
-import { items } from "@/data/items";
-import { getDailyPick } from "@/lib/dailyPick";
-import { useGame } from "@/lib/gameState";
+import { items } from "@/lib/data/items";
+import { getDailyPick } from "@/lib/game/engine";
+import { useGameState } from "@/hooks/useGameState";
 
 function RarityBadge({ rarity }: { rarity: string }) {
   const cls =
@@ -26,7 +26,7 @@ function RarityBadge({ rarity }: { rarity: string }) {
 
 export default function Home() {
   const daily = React.useMemo(() => getDailyPick(), []);
-  const { state, actions, isHydrated } = useGame();
+  const { state, actions, isHydrated } = useGameState();
 
   return (
     <div className="min-h-screen bg-zinc-50 text-zinc-900">
