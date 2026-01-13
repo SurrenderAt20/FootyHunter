@@ -10,6 +10,5 @@ export async function GET() {
     seed: daily.seed,
     index: daily.index,
     // Don't leak the answer by default.
-    hint: daily.item.hint,
   });
 }

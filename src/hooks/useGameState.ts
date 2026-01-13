@@ -1,24 +1,39 @@
 "use client";
 
 import * as React from "react";
-import { getDailyPick } from "@/lib/game/engine";
+import { MAX_TURNS, evaluateTurn, getDailyPick } from "@/lib/game/engine";
+import { categories } from "@/lib/data/categories";
+import { players } from "@/lib/data/players";
+import type { Player, StatKey, TurnResult } from "@/lib/game/types";
 import { useLocalStorageState } from "./useLocalStorageState";
 
 export type GameState = {
   dateKey: string;
-  guesses: string[];
-  isSolved: boolean;
+
+  // Turn history in order.
+  turns: TurnResult[];
+
+  // Convenience caches for UI.
+  usedCategories: StatKey[];
+
+  // Resolved status.
+  status: "playing" | "solved" | "failed";
 };
 
-const STORAGE_KEY = "footyhunter.state.v1";
+const STORAGE_KEY = "footyhunter.state.v2";
 
 function defaultStateForToday(): GameState {
   const { dateKey } = getDailyPick();
-  return { dateKey, guesses: [], isSolved: false };
+  return {
+    dateKey,
+    turns: [],
+    usedCategories: [],
+    status: "playing",
+  };
 }
 
 type GameActions = {
-  guess: (itemId: string) => void;
+  submitTurn: (params: { guessPlayerId: string; categoryId: StatKey }) => void;
   reset: () => void;
 };
 
@@ -29,6 +44,14 @@ type GameStore = {
 };
 
 const GameContext = React.createContext<GameStore | null>(null);
+
+function getPlayerById(id: string): Player | undefined {
+  return players.find((p) => p.id === id);
+}
+
+function isCategoryValid(categoryId: StatKey): boolean {
+  return categories.some((c) => c.id === categoryId);
+}
 
 export function GameProvider({ children }: { children: React.ReactNode }) {
   const today = getDailyPick();
@@ -47,16 +70,38 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
   const actions = React.useMemo<GameActions>(() => {
     return {
-      guess(itemId) {
+      submitTurn({ guessPlayerId, categoryId }) {
         setState((prev) => {
-          if (prev.isSolved) return prev;
-          if (prev.guesses.includes(itemId)) return prev;
+          if (prev.status !== "playing") return prev;
+          if (prev.turns.length >= MAX_TURNS) return { ...prev, status: "failed" };
+          if (prev.usedCategories.includes(categoryId)) return prev;
+          if (!isCategoryValid(categoryId)) return prev;
 
-          const solved = itemId === today.item.id;
+          const guess = getPlayerById(guessPlayerId);
+          if (!guess) return prev;
+
+          const target = today.item;
+          const turnNumber = prev.turns.length + 1;
+
+          const result = evaluateTurn({
+            turn: turnNumber,
+            guess,
+            target,
+            categoryId,
+          });
+
+          const nextTurns = [...prev.turns, result];
+          const nextUsed = [...prev.usedCategories, categoryId];
+
+          let nextStatus: GameState["status"] = prev.status;
+          if (result.correct) nextStatus = "solved";
+          else if (nextTurns.length >= MAX_TURNS) nextStatus = "failed";
+
           return {
             ...prev,
-            guesses: [...prev.guesses, itemId],
-            isSolved: solved,
+            turns: nextTurns,
+            usedCategories: nextUsed,
+            status: nextStatus,
           };
         });
       },
@@ -64,7 +109,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
         setState(defaultStateForToday());
       },
     };
-  }, [setState, today.item.id]);
+  }, [setState, today.item]);
 
   const store: GameStore = React.useMemo(
     () => ({ state, actions, isHydrated }),

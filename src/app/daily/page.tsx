@@ -28,8 +28,8 @@ export default function DailyPage() {
           <div className="font-mono text-sm">{daily.index}</div>
         </div>
         <div className="mt-3 flex items-center justify-between">
-          <div className="text-sm text-zinc-600">Item</div>
-          <div className="font-medium">{daily.item.name}</div>
+          <div className="text-sm text-zinc-600">Target</div>
+          <div className="font-medium">Hidden</div>
         </div>
       </section>
     </main>

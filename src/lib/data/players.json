@@ -1,0 +1,138 @@
+[
+  {
+    "id": "lionel-messi",
+    "name": "Lionel Messi",
+    "nationality": "Argentina",
+    "club": "Inter Miami",
+    "position": "FW",
+    "stats": {
+      "cl_games": 163,
+      "cl_goals": 129,
+      "intl_caps": 180,
+      "intl_goals": 106,
+      "league_apps": 550,
+      "league_goals": 496,
+      "ballon_dor": 8,
+      "assists": 300
+    }
+  },
+  {
+    "id": "cristiano-ronaldo",
+    "name": "Cristiano Ronaldo",
+    "nationality": "Portugal",
+    "club": "Al Nassr",
+    "position": "FW",
+    "stats": {
+      "cl_games": 183,
+      "cl_goals": 140,
+      "intl_caps": 205,
+      "intl_goals": 128,
+      "league_apps": 520,
+      "league_goals": 498,
+      "ballon_dor": 5,
+      "assists": 230
+    }
+  },
+  {
+    "id": "kevin-de-bruyne",
+    "name": "Kevin De Bruyne",
+    "nationality": "Belgium",
+    "club": "Manchester City",
+    "position": "MF",
+    "stats": {
+      "cl_games": 70,
+      "cl_goals": 15,
+      "intl_caps": 100,
+      "intl_goals": 26,
+      "league_apps": 260,
+      "league_goals": 70,
+      "ballon_dor": 0,
+      "assists": 210
+    }
+  },
+  {
+    "id": "virgil-van-dijk",
+    "name": "Virgil van Dijk",
+    "nationality": "Netherlands",
+    "club": "Liverpool",
+    "position": "DF",
+    "stats": {
+      "cl_games": 55,
+      "cl_goals": 3,
+      "intl_caps": 65,
+      "intl_goals": 7,
+      "league_apps": 250,
+      "league_goals": 15,
+      "ballon_dor": 0,
+      "assists": 20
+    }
+  },
+  {
+    "id": "manuel-neuer",
+    "name": "Manuel Neuer",
+    "nationality": "Germany",
+    "club": "Bayern Munich",
+    "position": "GK",
+    "stats": {
+      "cl_games": 145,
+      "cl_goals": 0,
+      "intl_caps": 117,
+      "intl_goals": 0,
+      "league_apps": 380,
+      "league_goals": 0,
+      "ballon_dor": 0,
+      "assists": 5
+    }
+  },
+  {
+    "id": "kylian-mbappe",
+    "name": "Kylian Mbappé",
+    "nationality": "France",
+    "club": "Real Madrid",
+    "position": "FW",
+    "stats": {
+      "cl_games": 70,
+      "cl_goals": 48,
+      "intl_caps": 80,
+      "intl_goals": 47,
+      "league_apps": 250,
+      "league_goals": 200,
+      "ballon_dor": 0,
+      "assists": 90
+    }
+  },
+  {
+    "id": "luka-modric",
+    "name": "Luka Modrić",
+    "nationality": "Croatia",
+    "club": "Real Madrid",
+    "position": "MF",
+    "stats": {
+      "cl_games": 120,
+      "cl_goals": 10,
+      "intl_caps": 175,
+      "intl_goals": 24,
+      "league_apps": 480,
+      "league_goals": 55,
+      "ballon_dor": 1,
+      "assists": 160
+    }
+  },
+  {
+    "id": "erling-haaland",
+    "name": "Erling Haaland",
+    "nationality": "Norway",
+    "club": "Manchester City",
+    "position": "FW",
+    "stats": {
+      "cl_games": 40,
+      "cl_goals": 35,
+      "intl_caps": 35,
+      "intl_goals": 33,
+      "league_apps": 200,
+      "league_goals": 170,
+      "ballon_dor": 0,
+      "assists": 35
+    }
+  }
+]

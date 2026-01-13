@@ -1,0 +1,42 @@
+[
+  {
+    "id": "cl_games",
+    "label": "Champions League Games Played",
+    "description": "Total UEFA Champions League appearances"
+  },
+  {
+    "id": "cl_goals",
+    "label": "Champions League Goals",
+    "description": "Total UEFA Champions League goals"
+  },
+  {
+    "id": "intl_caps",
+    "label": "International Caps",
+    "description": "National team appearances"
+  },
+  {
+    "id": "intl_goals",
+    "label": "International Goals",
+    "description": "National team goals"
+  },
+  {
+    "id": "league_apps",
+    "label": "League Appearances",
+    "description": "Top-flight league appearances"
+  },
+  {
+    "id": "league_goals",
+    "label": "League Goals",
+    "description": "Top-flight league goals"
+  },
+  {
+    "id": "ballon_dor",
+    "label": "Ballon d'Or",
+    "description": "Ballon d'Or awards won"
+  },
+  {
+    "id": "assists",
+    "label": "Career Assists",
+    "description": "Estimated top-level assists"
+  }
+]
