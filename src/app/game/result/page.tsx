@@ -11,6 +11,8 @@ export default function ResultPage() {
   const statusLabel =
     state.status === "solved" ? "Solved" : state.status === "failed" ? "Failed" : "In progress";
 
+  const canReveal = state.status === "solved" || state.status === "failed";
+
   return (
     <main className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 py-10">
       <header className="flex items-start justify-between gap-4">
@@ -44,7 +46,7 @@ export default function ResultPage() {
         </div>
         <div className="mt-3 flex items-center justify-between">
           <div className="text-sm text-zinc-600">Todays player</div>
-          <div className="font-medium">{daily.item.name}</div>
+          <div className="font-medium">{canReveal ? daily.item.name : "Hidden"}</div>
         </div>
 
         <div className="mt-6 flex flex-wrap gap-2">
