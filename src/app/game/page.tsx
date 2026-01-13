@@ -25,16 +25,19 @@ export default function GamePage() {
       <header className="flex items-start justify-between gap-4">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">Game</h1>
-          <p className="text-sm text-zinc-600">
+          <p className="text-sm text-slate-500 dark:text-slate-400">
             Daily hunt • <span className="font-mono">{daily.dateKey}</span>
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <Link className="rounded-full border px-3 py-1 text-sm hover:bg-zinc-50" href="/">
+          <Link
+            className="rounded-full border border-slate-200 bg-white/60 px-3 py-1 text-sm hover:bg-white dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
+            href="/"
+          >
             Home
           </Link>
           <Link
-            className="rounded-full border px-3 py-1 text-sm hover:bg-zinc-50"
+            className="rounded-full border border-slate-200 bg-white/60 px-3 py-1 text-sm hover:bg-white dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
             href="/game/result"
           >
             Result
@@ -42,17 +45,19 @@ export default function GamePage() {
         </div>
       </header>
 
-      <section className="rounded-2xl border bg-white p-5 shadow-sm">
+      <section className="rounded-2xl border border-slate-200 bg-white/80 p-5 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5">
         <h2 className="text-lg font-semibold">GeoHunter core loop (WIP)</h2>
-        <p className="mt-2 text-zinc-700">Guess a player, pick a category, and get feedback.</p>
+        <p className="mt-2 text-slate-700 dark:text-slate-300">
+          Guess a player, pick a category, and get feedback.
+        </p>
 
         <div className="mt-4 flex items-center justify-between gap-4">
-          <p className="text-sm text-zinc-600">
+          <p className="text-sm text-slate-600 dark:text-slate-400">
             Status: <span className="font-medium">{state.status}</span> 1 Turns: {state.turns.length}/8
             1 Remaining turns: {remainingTurns} 1 Remaining categories: {remainingCategories}
           </p>
           <button
-            className="rounded-full border px-3 py-1 text-sm hover:bg-zinc-50"
+            className="rounded-full border border-slate-200 bg-white/60 px-3 py-1 text-sm hover:bg-white dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
             onClick={actions.reset}
           >
             Reset
@@ -65,8 +70,8 @@ export default function GamePage() {
           className={
             "rounded-2xl border p-4 " +
             (state.status === "solved"
-              ? "border-emerald-200 bg-emerald-50 text-emerald-950"
-              : "border-rose-200 bg-rose-50 text-rose-950")
+              ? "border-emerald-300/40 bg-emerald-500/10 text-emerald-950 dark:text-emerald-100"
+              : "border-rose-300/40 bg-rose-500/10 text-rose-950 dark:text-rose-100")
           }
         >
           {state.status === "solved" ? (
@@ -83,9 +88,9 @@ export default function GamePage() {
         </div>
       )}
 
-      <section className="rounded-2xl border bg-white p-5 shadow-sm">
+      <section className="rounded-2xl border border-slate-200 bg-white/80 p-5 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5">
         <h2 className="text-lg font-semibold">Choose a player</h2>
-        <p className="mt-1 text-sm text-zinc-600">Pick your guess for this turn.</p>
+        <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">Pick your guess for this turn.</p>
 
         <div className="mt-3">
           <PlayerAutocomplete
@@ -97,19 +102,23 @@ export default function GamePage() {
         </div>
 
         {state.status !== "playing" && (
-          <div className="mt-3 text-xs text-zinc-500">Selections are locked because the run is over.</div>
+          <div className="mt-3 text-xs text-slate-500 dark:text-slate-400">
+            Selections are locked because the run is over.
+          </div>
         )}
 
         {selectedPlayer && (
-          <div className="mt-3 rounded-xl border bg-zinc-50 p-3 text-sm">
+          <div className="mt-3 rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm dark:border-white/10 dark:bg-white/5">
             Selected: <span className="font-medium">{selectedPlayer.name}</span>
           </div>
         )}
       </section>
 
-      <section className="rounded-2xl border bg-white p-5 shadow-sm">
+      <section className="rounded-2xl border border-slate-200 bg-white/80 p-5 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5">
         <h2 className="text-lg font-semibold">Choose a category</h2>
-        <p className="mt-1 text-sm text-zinc-600">Each category can only be used once.</p>
+        <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+          Each category can only be used once.
+        </p>
 
         <div className="mt-3">
           <CategoryPicker
@@ -122,7 +131,7 @@ export default function GamePage() {
         </div>
 
         <div className="mt-4 flex items-center justify-between gap-3">
-          <div className="text-xs text-zinc-500">
+          <div className="text-xs text-slate-500 dark:text-slate-400">
             {selectedCategory ? (
               <>Selected category: <span className="font-medium">{selectedCategory}</span></>
             ) : (
@@ -142,18 +151,18 @@ export default function GamePage() {
               setSelectedCategory(null);
               setSelectedPlayer(null);
             }}
-            className="rounded-full bg-zinc-900 px-4 py-2 text-sm text-white disabled:cursor-not-allowed disabled:bg-zinc-300"
+            className="rounded-full bg-slate-900 px-4 py-2 text-sm text-white shadow-sm transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-300 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200 dark:disabled:bg-white/20 dark:disabled:text-white/60"
           >
             Submit turn
           </button>
         </div>
       </section>
 
-      <section className="rounded-2xl border bg-white p-5 shadow-sm">
+      <section className="rounded-2xl border border-slate-200 bg-white/80 p-5 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5">
         <h2 className="text-lg font-semibold">Turn history</h2>
         <div className="mt-4 flex flex-col gap-2">
           {state.turns.length === 0 ? (
-            <p className="text-sm text-zinc-600">No turns yet.</p>
+            <p className="text-sm text-slate-600 dark:text-slate-400">No turns yet.</p>
           ) : (
             state.turns.map((t) => {
               const categoryLabel = categories.find((c) => c.id === t.categoryId)?.label ?? t.categoryId;
@@ -167,15 +176,22 @@ export default function GamePage() {
                     : "Target is lower";
 
               return (
-                <div key={t.turn} className="rounded-xl border bg-white p-3 text-sm">
+                <div
+                  key={t.turn}
+                  className="rounded-xl border border-slate-200 bg-white/70 p-3 text-sm dark:border-white/10 dark:bg-white/5"
+                >
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <div>
                       <span className="font-medium">Turn {t.turn}</span> 1 {guessedPlayer?.name ?? t.guessPlayerId}
-                      <span className="text-zinc-500"> 1 </span>
+                      <span className="text-slate-400">  </span>
                       {categoryLabel}
-                      {t.correct && <span className="ml-2 rounded-full bg-emerald-100 px-2 py-0.5 text-xs text-emerald-900">Correct</span>}
+                      {t.correct && (
+                        <span className="ml-2 rounded-full bg-emerald-500/15 px-2 py-0.5 text-xs text-emerald-800 dark:text-emerald-200">
+                          Correct
+                        </span>
+                      )}
                     </div>
-                    <div className="text-xs text-zinc-600">
+                    <div className="text-xs text-slate-600 dark:text-slate-400">
                       Your value: <span className="font-mono">{t.guessValue}</span> 1 {meaning}
                     </div>
                   </div>

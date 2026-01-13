@@ -1,19 +1,40 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light theme */
+  --background: #f8fafc; /* slate-50 */
+  --foreground: #0f172a; /* slate-900 */
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --muted: #f1f5f9; /* slate-100 */
+  --muted-foreground: #475569; /* slate-600 */
+  --border: #e2e8f0; /* slate-200 */
+  --ring: #94a3b8; /* slate-400 */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Dark theme */
+    --background: #0b1220;
+    --foreground: #e5e7eb;
+    --card: #0f172a;
+    --card-foreground: #e5e7eb;
+    --muted: #111c33;
+    --muted-foreground: #9ca3af;
+    --border: rgba(148, 163, 184, 0.22);
+    --ring: rgba(226, 232, 240, 0.35);
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Give form controls a more consistent baseline in both themes */
+input,
+button {
+  color: inherit;
 }

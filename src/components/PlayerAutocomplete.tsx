@@ -43,7 +43,7 @@ export function PlayerAutocomplete(props: {
         }}
         onFocus={() => setIsOpen(true)}
         placeholder={placeholder}
-        className="w-full rounded-xl border bg-white px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-zinc-300 disabled:cursor-not-allowed disabled:bg-zinc-50"
+        className="w-full rounded-xl border border-slate-200 bg-white/90 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-slate-300 disabled:cursor-not-allowed disabled:bg-slate-50 dark:border-white/10 dark:bg-white/5 dark:focus:ring-white/20 dark:disabled:bg-white/5"
       />
 
       {isOpen && (
@@ -56,9 +56,9 @@ export function PlayerAutocomplete(props: {
       )}
 
       {isOpen && !disabled && (
-        <div className="absolute z-20 mt-2 max-h-72 w-full overflow-auto rounded-xl border bg-white shadow-sm">
+        <div className="absolute z-20 mt-2 max-h-72 w-full overflow-auto rounded-xl border border-slate-200 bg-white shadow-sm dark:border-white/10 dark:bg-slate-900">
           {filtered.length === 0 ? (
-            <div className="px-3 py-2 text-sm text-zinc-600">No matches.</div>
+            <div className="px-3 py-2 text-sm text-slate-600 dark:text-slate-400">No matches.</div>
           ) : (
             filtered.map((p) => (
               <button
@@ -69,17 +69,19 @@ export function PlayerAutocomplete(props: {
                   setQuery(p.name);
                   setIsOpen(false);
                 }}
-                className="flex w-full flex-col px-3 py-2 text-left hover:bg-zinc-50"
+                className="flex w-full flex-col px-3 py-2 text-left hover:bg-slate-50 dark:hover:bg-white/5"
               >
                 <span className="text-sm font-medium">{p.name}</span>
-                <span className="text-xs text-zinc-600">
+                <span className="text-xs text-slate-600 dark:text-slate-400">
                   {p.club} • {p.nationality} • {p.position}
                 </span>
               </button>
             ))
           )}
 
-          <div className="border-t px-3 py-2 text-xs text-zinc-500">Tip: type name/club/country</div>
+          <div className="border-t border-slate-200 px-3 py-2 text-xs text-slate-500 dark:border-white/10 dark:text-slate-400">
+            Tip: type name/club/country
+          </div>
         </div>
       )}
     </div>
